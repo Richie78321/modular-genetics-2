@@ -21,15 +21,18 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneticSequence.h">
+    <ClInclude Include="ModularGenetics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ModularGenetics.h">
+    <ClInclude Include="GeneticSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneticSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
