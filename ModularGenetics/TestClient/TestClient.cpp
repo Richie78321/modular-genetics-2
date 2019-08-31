@@ -3,19 +3,24 @@
 #include "ModularGenetics.h"
 #include <bitset>
 #include <tuple>
+#include <boost\dynamic_bitset.hpp>
+
+using namespace ModularGenetics;
 
 int main()
 {
-	ModularGenetics::GeneticSequence<6> sequence_1(std::bitset<6>("111111"));
-	ModularGenetics::GeneticSequence<6> sequence_2(std::bitset<6>("000000"));
+	GeneticSequence test_seq_1 = GeneticSequence("000000");
+	GeneticSequence test_seq_2 = GeneticSequence("111111");
 
-	for (int i = 0; i < 100; i++)
-	{
-		std::tuple<ModularGenetics::GeneticSequence<6>, ModularGenetics::GeneticSequence<6>> crossover_product = ModularGenetics::GeneticSequence<6>::Crossover(i, sequence_1, sequence_2);
-		std::cout << std::get<0>(crossover_product).getBitSet()->to_string() << std::endl;
-		std::cout << std::get<1>(crossover_product).getBitSet()->to_string() << std::endl;
-		std::cout << std::endl;
-	}
+	srand((unsigned)std::time(NULL));
+	std::tuple<GeneticSequence, GeneticSequence> child_seq = GeneticSequence::Crossover(2, test_seq_1, test_seq_2);
+
+	std::string child_1, child_2;
+	boost::to_string(std::get<0>(child_seq).get_bit_set(), child_1);
+	boost::to_string(std::get<1>(child_seq).get_bit_set(), child_2);
+
+	std::cout << child_1 << std::endl;
+	std::cout << child_2 << std::endl;
 
 	std::cin.get();
 }
