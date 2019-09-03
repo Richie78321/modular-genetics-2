@@ -5,17 +5,29 @@
 #include <tuple>
 #include <boost\dynamic_bitset.hpp>
 #include <vector>
+#include <iostream>
 
 using namespace ModularGenetics;
 
 int main()
 {
-	std::vector<int> test(100);
-	test.push_back(999);
+	std::vector<Agent*> agents;
+	for (int i = 0; i < 100; i++)
+	{
+		std::vector<Phenotype> phenotypes;
+		phenotypes.push_back(Phenotype(100, 10));
+		phenotypes.push_back(Phenotype(20, 20));
+		agents.push_back(new Agent(phenotypes));
+	}
 
-	std::for_each(test.begin(), test.end(), [](int element) {
-		std::cout << element << std::endl;
+	std::cin.get();
+
+	std::for_each(agents.begin(), agents.end(), [](Agent* element)
+	{
+		delete element;
 	});
+
+	agents.clear();
 
 	std::cin.get();
 }

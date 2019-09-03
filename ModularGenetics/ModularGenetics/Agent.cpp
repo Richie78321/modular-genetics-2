@@ -35,7 +35,10 @@ Agent::Agent(std::vector<Phenotype> phenotypes) : phenotypes(phenotypes)
 Agent::~Agent()
 {
 	//Clear agent genome
-	this->genome.clear();
+	std::for_each(this->genome.begin(), this->genome.end(), [](const GeneticSequence* element)
+	{
+		delete element;
+	});
 }
 
 const std::vector<const GeneticSequence*>& ModularGenetics::Agent::get_genome() const
